@@ -1,0 +1,10 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="MAP_TYPE"
+        android:title="Map Type"
+        android:defaultValue="MAP_TYPE_NORMAL"
+        android:entries="@array/map_type_names"
+        android:entryValues="@array/map_type_values"/>
+
+</PreferenceScreen>
