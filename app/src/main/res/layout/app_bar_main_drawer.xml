@@ -22,44 +22,58 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>
-
+    <!-- This include tag below is only for future use, is a placebo and does nothing right now-->
     <include layout="@layout/content_main_drawer" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-    <fragment xmlns:android="http://schemas.android.com/apk/res/android"
+        <fragment xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="350dp"
-        android:id="@+id/map"
+        android:id="@+id/dashboard_map"
         tools:context=".MapsActivity"
-        android:name="com.google.android.gms.maps.MapFragment" />
+        android:name="com.google.android.gms.maps.MapFragment">
+
+        <android.support.v7.widget.AppCompatButton
+            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_gravity="bottom|center"
+            android:text="View Fullscreen Map"
+            android:textColor="@android:color/white"
+            android:alpha="0.7"
+            android:padding="0dp"
+            android:background="@android:color/background_dark"
+            android:onClick="onFullscreenClicked"
+            />
+
+    </fragment>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="4dp"
+        android:layout_height="3dp"
         android:background="@color/colorPrimary"
         />
         <android.support.v7.widget.CardView
             android:id="@+id/card_view1"
             android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:layout_margin="10dp"
             app:cardCornerRadius="2dp"
             app:contentPadding="5dp"
-            android:onClick="placebo1">
+            android:onClick="onSearchClicked">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/nearby_icon1"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@mipmap/search_icon"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/mapsearch"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"/>
 
@@ -69,7 +83,8 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_toRightOf="@id/nearby_icon1"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="5dp"
                     android:textSize="20sp"
                     android:text="Search Places"
                     android:textAppearance="@style/TextAppearance.AppCompat"/>
@@ -79,7 +94,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginLeft="5dp"
                     android:text="Find places by name"
                     android:layout_toRightOf="@id/nearby_icon1"/>
             </RelativeLayout>
@@ -89,7 +105,7 @@
             android:id="@+id/card_view2"
             android:layout_gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="70dp"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             app:cardCornerRadius="2dp"
@@ -101,9 +117,9 @@
                 android:layout_height="match_parent">
                 <ImageView
                     android:id="@+id/nearby_icon2"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:src="@mipmap/nearby_icon"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/mapnearby"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"/>
 
@@ -113,7 +129,8 @@
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
                     android:layout_toRightOf="@id/nearby_icon2"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="5dp"
                     android:textSize="20sp"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     android:text="Search Nearby"/>
@@ -123,9 +140,57 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="10dp"
-                    android:text="Find places of interests near you"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Find all places of interest near you"
                     android:layout_toRightOf="@id/nearby_icon2"/>
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/card_view3"
+            android:layout_gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            app:cardCornerRadius="2dp"
+            app:contentPadding="5dp"
+            android:onClick="onCategoriesClicked">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageView
+                    android:id="@+id/nearby_icon3"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/searchcategory"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"/>
+
+                <TextView
+                    android:id="@+id/cardViewHead3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:layout_toRightOf="@id/nearby_icon3"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="20sp"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:text="Categories"/>
+
+                <TextView
+                    android:id="@+id/cardViewDesc3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="7dp"
+                    android:layout_marginLeft="5dp"
+                    android:text="Search places by categories"
+                    android:layout_toRightOf="@id/nearby_icon3"/>
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
