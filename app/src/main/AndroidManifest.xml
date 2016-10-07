@@ -24,10 +24,18 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCy-mL9VnloZMENBd_jDj-tOiYXmefq4fA" />
+        <!--<meta-data-->
+        <!--android:name="com.google.android.maps.v2.API_KEY"-->
+        <!--android:value="AIzaSyCy-mL9VnloZMENBd_jDj-tOiYXmefq4fA"/>-->
+
         <activity
             android:name=".MainDrawerActivity"
-            android:launchMode="singleTop"
             android:label="@string/app_name"
+            android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,14 +43,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <meta-data
-            android:name="com.google.android.maps.v2.API_KEY"
-            android:value="AIzaSyCy-mL9VnloZMENBd_jDj-tOiYXmefq4fA" />
-
         <activity
             android:name=".SettingsActivity"
-            android:label="@string/title_activity_settings"
+            android:label="Settings"
+            android:parentActivityName=".MainDrawerActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.android.aayush.travelcompaniondemo.MainDrawerActivity" />
+        </activity>
+        <activity android:name=".CategoryActivity"
+            android:label="Categories"
+            android:parentActivityName=".MainDrawerActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.android.aayush.travelcompaniondemo.MainDrawerActivity" />
+        </activity>
+        <activity android:name=".FullscreenMapsActivity"
+            android:label="Map"
             android:parentActivityName=".MainDrawerActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
